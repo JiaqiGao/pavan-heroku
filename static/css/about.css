@@ -1,0 +1,33 @@
+#graphic1 {
+    background-image: url('../media/uchicago.jpg');
+    background-position: center;
+    margin: auto;
+    background-size: cover;
+    height: 40vw;
+    padding: 5vh;
+} 
+
+ul{
+    text-decoration: none;
+}
+
+h3{
+    font-family: 'Gotham Light Italic';
+}
+
+.red{
+    color: darkred;
+    display: inline-block;
+}
+
+.blue{
+    color: dodgerblue;
+    display: inline-block;
+}
+
+.green{
+    color: forestgreen;
+    display: inline-block;
+}
+
+

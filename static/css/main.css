@@ -1,149 +1,343 @@
-@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
-@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
-
-#map {
-        width: 100%;
-        height: 400px;
-        background-color: grey;
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url('webfonts/GOTHAM-BOLD.TTF') format('truetype');
+}
+@font-face {
+  font-family: 'Gotham Med';
+  src: url('webfonts/Gotham-Book.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Gotham Light';
+  src: url('webfonts/GOTHAM-LIGHT.TTF') format('truetype');
+}
+@font-face {
+  font-family: 'Gotham Light Italic';
+  src: url('webfonts/Gotham-LightItalic.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Gotham Thin';
+  src: url('webfonts/Gotham-Thin.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Gotham Thin Italic';
+  src: url('webfonts/Gotham-ThinItalic.otf') format('opentype');
 }
 
-.back{
-    z-index: -5;
-    height: 200px;
-    width: 250px;
-    position: relative;
-    margin: 10px;
-    opacity: 0.25;
+
+body {
+    font-family: 'Gotham Light', sans-serif;
+}
+h3{
+  font-family: 'Gotham Med';
+}
+.panel-body  {
+    word-break: break-all
+}
+.navigation-bar ul {
+  padding: 0px;
+  text-align: center;
+  display:inline-block;
+  vertical-align:top;
 }
 
-.layerOne{
-    z-index: 2;
-    min-width: 900px;
-    position: absolute;
-    margin-left: 50%;
+#pavan-brand {
+  height: 5.5vh;
+  margin-top: 1vh;
+  margin-left: 0.5vh;
+  margin: 1vh;
 }
 
-h1{
-    line-height: 300%;
+.navbar-toggle {
+  color: white;
 }
 
-ul{
-    margin-left:80px;
+ul.nav {
+  color: white;
+  font-family: 'Gotham Med';
+  color: white;
+  margin: 1vh;
+  background-color: rgba(0,0,0,0.7);
 }
 
-.sectionmap{
-    z-index: -5;
-    position: relative;
-    max-height: 400px;
-    min-width: 1180px;
-    object-fit: cover;
-    filter: grayscale(75%);
-    margin: -10px;
+ul.nav a:hover{
+  background-color: rgba(0,0,0,0.3);
+  color: black;
 }
 
-.sectiontitle{
-    font-family: 'Luckiest Guy', cursive;
-    z-index: 2;
-    font-size: 100px;
-    position: absolute;
-    text-align: center;
-    color: #F0F8FF;
+.navbar-inverse {
+  background: transparent;
+  border:none !important;
+  color: white;
 }
 
-.sectiontitle :hover{
-    background-color: #FAEBD7;
-    opacity: 0.8;
+.graphic-row {
+   margin-left: 2vw;
+   margin-right: 2vw;
 }
 
-.card .card-image{
-    overflow: hidden;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+#carousel-item {
+  text-align: center;
+  width: 100%
 }
 
-.card .card-image img{
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    transition: all 0.4s ease;
+.carousel-inner {
+    width: 100%
 }
 
-.card .card-image:hover img{
-    -webkit-transform: scale(1.2) rotate(-7deg);
-    -moz-transform: scale(1.2) rotate(-7deg);
-    -ms-transform: scale(1.2) rotate(-7deg);
-    -o-transform: scale(1.2) rotate(-7deg);
-    transform: scale(1.2) rotate(-7deg);
+.carousel-item {
+  width: 100%
 }
 
-.card{
-    font-family: 'Amatic SC';
-    width: 40%;
-    margin-top: 10px;
-    position: relative;
-    display: block;
+#graphic1 {
+    background-image: url('../media/homepage/New_Delhi_0.jpg');
+    background-position: center;
     margin: auto;
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 4 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    background-size: cover;
+    height: 40vw;
+    padding: 5vw;
 }
 
-.card .card-content {
-    padding: 10px;
+#courtesy {
+  font-size: 1vw;
+  margin-top: 3vw;
 }
 
-.card .card-content .card-title, .card-reveal .card-title{
-    font-size: 24px;
-    font-weight: 200;
-    font-family: 'Amatic SC';
+#graphic1a {
+  font-size: 4vw;
+  margin-top: 13vw;
+  text-align: left;
+  padding: 0.5vw;
+  background-color: rgba(0,0,0,0.5);
+  font-family: 'Gotham Thin Italic';
 }
 
-.card .card-action{
-    padding: 20px;
-    border-top: 1px solid rgba(160, 160, 160, 0.2);
-}
-.card .card-action a{
-    font-size: 15px;
-    color: #ffab40;
-    font-family: 'Amatic SC';
-    margin-right: 20px;
-    -webkit-transition: color 0.3s ease;
-    -moz-transition: color 0.3s ease;
-    -o-transition: color 0.3s ease;
-    -ms-transition: color 0.3s ease;
-    transition: color 0.3s ease;
-}
-.card .card-action a:hover{
-    color:#ffd8a6;
-    text-decoration:none;
+#twitter {
+  height: 4vw;
+  margin: 0;
 }
 
-.card .card-reveal{
-    padding: 20px;
-    position: absolute;
-    background-color: #FFF;
-    width: 100%;
-    overflow-y: auto;
-    /*top: 0;*/
-    left:0;
-    bottom:0;
-    height: 100%;
-    z-index: 1;
-    display: none;
+#twitterinfo {
+  display: inline-block;
+  color: white;
+  background-color: rgba(0,0,0,0.3);
+  padding: 5px;
+  font-size: 1.6vw;
+  font-family: 'Gotham Thin Italic';
 }
 
-.card .card-reveal p{
-    color: rgba(0, 0, 0, 0.71);
-    margin:20px ;
+#graphic1b:hover {
+  -webkit-animation: swing 2s ease;
+  animation: swing 2s ease;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
 
-.btn-custom{
-    background-color: transparent;
-    font-size:18px;
+#graphic1c {
+  -webkit-transition: background-color 0.7s; /* Safari */
+  transition: background-color 0.7s;
 }
 
+#graphic1c:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+svg { width:100%; height: 100% }
+
+#home-graphic {
+  list-style: none;
+}
+
+.header2{
+   font-family: 'Gotham Bold';
+}
+
+.next {
+  text-align: right;
+  font-family: 'Gotham Thin Italic';
+  color: #3e4851;
+  margin-top: 1em;
+}
+.graphic-lines {
+    color: white;
+    font-family: 'Halisr Reg';
+}
+.graphic-description {
+  margin-top: 1em;
+  font-family: 'Gotham Med';
+  color: #373F47;
+  font-size: 1.5em;
+}
+
+.dropdown-menu {
+  background-color: rgba(255,255,255,0.9);
+}
+
+th{
+  font-family: 'Gotham Bold';
+  margin-left: 2vw;
+  margin-right: 2vw;
+  text-align: center;
+  background-color: black;
+  padding: 1vw;
+  border-right: solid;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: white;
+}
+
+tr{
+  font-family: 'Gotham Light';
+  font-size: smaller;
+  padding: 2vw;
+  color:white;
+}
+
+td{
+  padding: 1vw;
+  border-right: solid;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: white;
+}
+
+.graphic-description2 {
+  font-family: 'Gotham Light';
+  font-size: 1.2em;
+  color: black;
+}
+
+.graphicHeader {
+  font-family: 'Gotham Bold', sans-serif;
+  font-size: 2em;
+  color: black;
+}
+
+.homepagepic{
+  margin-top: 2em;
+  width: 90%;
+}
+
+
+
+#graphic2 {
+    padding: 4vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.legend {
+  font-size: 12px;
+}
+
+.card {
+  padding: 3vw;
+  border-style: dashed;
+  border-color: #508991;
+}
+
+.card-btn {
+  color: inherit;
+}
+
+#graphic3 {
+  margin-left: 6vw;
+  padding-right: 5vw;
+}
+
+#graphic4 {
+}
+
+#footer {
+    height: 20em;
+    background-color: #23282d;
+}
+
+#psigroup {
+  padding: 1em;
+  text-align: center;
+}
+
+.logo{
+  height: 7vw;
+  width: 7vw;
+  margin-bottom: 1vw;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:hover{
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.footing {
+  font-family: 'Gotham Light';
+  color: white;
+  margin: 5vw;
+  margin-left: 10vw;
+  padding-left: 2vw;
+  border-left: 3px dashed rgba(255, 255, 255, 0.5);
+}
+
+.subunit.IND { fill: #ddc; }
+
+.subunit-boundary {
+  fill: none;
+  stroke: #777;
+  stroke-dasharray: 2,2;
+  stroke-linejoin: round;
+}
+
+.subunit-boundary.IRL {
+  stroke: black;
+}
+
+.place,
+.place-label {
+  fill: black;
+}
+
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  pointer-events: none;
+  color: black;
+}
+
+#resultsearch{
+  display: none;
+  margin-left: 2vw;
+
+}
+
+.bol{
+  font-family: 'Gotham Bold';
+  display: inline;
+}
+
+.blue{
+  color: deepskyblue;
+}
+
+.jqvmap-zoomin, .jqvmap-zoomout {
+  padding-top: 2px;
+  width: 18px;
+  height: 12px;
+  cursor: auto;
+}
+
+#seemore{
+  background-color: orange;
+  color: white;
+  margin-left: 15px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+p{
+  line-height: 10px;
+  display: inline;
+}
