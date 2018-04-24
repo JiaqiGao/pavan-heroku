@@ -28,5 +28,4 @@ def index():
 
 if __name__ == "__main__":
     #config.load_keys()
-    app.debug = True
     app.run()

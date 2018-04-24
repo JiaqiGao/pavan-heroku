@@ -103,10 +103,6 @@
          <input class="btn btn-primary" type="submit" value="Search">
       </form>
 
-      {% if success %}
-      {{locate}}
-      {% endif %}
-      
       <div id="map"></div>
       {% if success %}
           <script>
@@ -158,7 +154,11 @@
 
     <div class="col-5">
       <br>
-      <div id="specific">
+      {% if success %}
+      {{locate}}
+      {% endif %}
+
+	<div id="specific">
         {% if airquality %}
             Measurement for {{ airquality["parameter"] }}: {{ airquality["value"] }}{{ airquality["unit"] }}
         {% endif %}
