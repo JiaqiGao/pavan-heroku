@@ -2,7 +2,7 @@ import config
 import requests
 import openaq
 
-search_address = "Connaught Place, New Delhi, India"
+#search_address = "Connaught Place, New Delhi, India"
 
 def googlemap(address):
     address = address.replace(" ", "+") 
@@ -17,10 +17,7 @@ def googlemap(address):
         current_city = current_location['results'][0]['address_components'][1]['long_name']
         api = openaq.OpenAQ()
         status, resp = api.measurements(city = current_city)
-        #print resp['results'][0]
         display = resp['results'][0]
         return {"time": display['date']['local'], "city": display['city'], "location":display['location'], "measurement": {"parameter":display['parameter'], "value":display['value'], "unit": display['unit']}}
     else:
         return {} 
-
-#print googlemap(search_address)
