@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <link rel="shortcut icon" href="static/media/favicon.ico">
   <link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css">
-  <link rel="stylesheet" href="stylesheets/jqvmap.css">
   <link type="text/css" rel="stylesheet" href="static/css/main.css">
-  <script type="text/javascript" src="static/js/jquery.min.js"></script>
-  <script type='text/javascript' src='config.js'></script>
+  <script type="text/javascript" src="static/js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="static/js/tether.min.js"></script>
   <script type="text/javascript" src="static/js/tether_bootstrap.min.js"></script>
   <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-  <script type='text/javascript' src="static/js/require.js"></script>
+
+
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
 
@@ -90,6 +89,7 @@
       <p>Image courtesy of https://www.theatlantic.com</p>
     </div>
 </div>
+
 <div id="graphic2" class="container-fluid">
   <div class="graphicHeader">
       Find the air quality in your area <h2 id="time-head"></h2>
@@ -97,168 +97,31 @@
   <div class="row">
     <br>
     <div class="col-md-7">
+      <form id="search-form" class="layerOne">
+         <div class="form-group">
+           <h4>Search Location: <input class="form-control" type="text" name="address" placeholder="ex: Connaught Place, New Delhi, India" required></h4>
+         </div>
+         <input class="btn btn-primary" type="submit" value="Search">
+      </form>
+      
+      <div id="map"></div>
 
-         <!-- <div id="chart"></div>-->
-
-      <script src="javascripts/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-      <script src="javascripts/jqvmap/maps/jquery.vmap.delhi.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                jQuery('#vmap').vectorMap(
-                    {
-                        map: 'delhi_en',
-                        backgroundColor: '#a5bfdd',
-                        borderColor: '#818181',
-                        borderOpacity: 0.25,
-                        borderWidth: 1,
-                        color: '#f4f3f0',
-                        enableZoom: true,
-                        hoverColor: '#c9dfaf',
-                        hoverOpacity: null,
-                        normalizeFunction: 'linear',
-                        scaleColors: ['#b6d6ff', '#005ace'],
-                        selectedColor: '#c9dfaf',
-                        selectedRegion: null,
-                        showTooltip: true
-                    });
-            });
-        </script>
-
-      <div id="vmap" style="width: 600px; max-width: 80vw; height: 500px;">
-      </div>
-      <!--
-     <script type="text/javascript">
-
-     require.config({
-     paths: {
-         d3: "//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min",
-         geo: "//d3js.org/d3.geo.projection.v0.min",
-         topo: "//d3js.org/topojson.v1"
-    },
-    shim: {
-        geo: {
-            deps: ["d3"]
-        },
-        topo:{
-            deps: ["d3","geo"]
-        }
-    }
-   });
-
-   require(["d3","geo","topo"],function(d3,geo,topojson){
-
-     var legend_labels = ["< 50", "50+", "100+", "150+", "200+", ">300"];
-
-     var color_domain = [50, 150, 350, 750, 1500];
-     var ext_color_domain = ["#641E16", "#633974", "#e74c3c", "#f39c12", "#148f77", "#1f618d"];
-     var color = d3.scale.threshold()
-       .domain(color_domain)
-       .range(["#641E16", "#633974", "#e74c3c", "#f39c12", "#148f77", "#1f618d"]);
-
-       var width = 1300,
-         height = 1650;
-
-       var projection = d3.geo.albers()
-         .center([0, 20.5937])
-         .rotate([-78.9629, 0])
-         .parallels([6, 39])
-         .scale(1500)
-         .translate([300, 420]);
-
-       var path = d3.geo.path()
-           .projection(projection);
-
-       var svg = d3.select("#chart").append("svg")
-           .attr("width", width)
-           .attr("height", height);
-
-       var color = d3.scale.category10()
-
-       // points
-       coords = [[327, 207, 0.3]];
-
-       function showPosition(position) {
-          coords.push([position.coords.latitude, position.coords.longitude]);
-       }
-
-       if (navigator.geolocation) {
-           navigator.geolocation.watchPosition(showPosition);
-           //coords.push([311,231, 0.6]);
-       }
-
-       d3.json("india.json", function(error, india) {
-         svg.selectAll(".subunit")
-             .data(topojson.feature(india, india.objects.subunits).features)
-
-           .enter().append("path")
-             .attr("class", function(d) { return "subunit " + d.id; })
-             .attr("d", path)
-             .style("fill", function (d,i) { return "#c1c1c1" });
-
-         svg.selectAll(".place-label")
-           .data(topojson.feature(india, india.objects.places).features)
-         .enter().append("text")
-           .attr("class", "place-label")
-           .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
-           .attr("x", function(d) { return d.geometry.coordinates[0] > -1 ? 6 : -6; })
-           .attr("dy", ".35em")
-           .style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 ? "start" : "end"; })
-           .text(function(d) { return d.properties.name; });
-
-           svg.selectAll("circle")
-                 .data(coords).enter()
-                 .append("circle")
-                 .attr("cx", function (d) { return (d)[0]-50; })
-                 .attr("cy", function (d) { return (d)[1]-10; })
-                 .attr("r", "2em")
-                 .attr("fill", "red")
-             .style("opacity", function (d) { return (d)[2]; })
-             .each(pulse);
-
-             function pulse() {
-                     var circle = svg.selectAll("circle");
-                     (function repeat() {
-                         circle = circle.transition()
-                   .duration(1800)
-                   .attr("r","4em")
-                   .transition()
-                   .attr("r","2em")
-                   .each("end", repeat);
-                     })();
-                 }
-
-
-             d3.json("india.json", function(error, india) {
-             if (error) return console.error(error);
-                 console.log(india);
-             });
-
-       });
-
-       var legend = svg.selectAll("g.legend")
-         .data(ext_color_domain)
-         .enter().append("g")
-         .attr("class", "legend");
-
-       var ls_w = 20, ls_h = 20;
-
-       legend.append("rect")
-         .attr("x", 20)
-         .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h - 800;})
-         .attr("width", ls_w)
-         .attr("height", ls_h)
-         .style("fill", function(d, i) { return color(d); })
-         .style("opacity", 0.8);
-
-       legend.append("text")
-         .attr("x", 50)
-         .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4 - 800;})
-         .text(function(d, i){ return legend_labels[i]; });
-
-   });
-
-     </script>
--->
+      <script>
+          function initMap() {
+              var uluru = {lat: 28.6139, lng: 77.2090};
+              var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 7,
+                  center: uluru
+              });
+              var marker = new google.maps.Marker({
+                  position: uluru,
+                  map: map
+              });
+          }
+      </script>
+      <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSZTsGqzbh-nFh5D-hNGgA-tkJRu9oO7U&callback=initMap">
+      </script>
 
 
     </div>
@@ -272,10 +135,7 @@
   </div>
 
     <div class="row">
-      <div id="seemore">Click to See More Stations in: New Delhi</div>
 
-      <div id="resultsearch">
-      </div>
     </div>
   </div>
 
@@ -285,17 +145,7 @@
 <br>
 
 <div id="graphic3" class="container-fluid">
-<!--
-  <div class="graphicHeader">
-    Forecasted Air Quality
-  </div>
 
-  <img src="static/media/homepage/anime_hourly_pm25_delhi.gif" style="max-width: 80vw;">
-  <br>
-  Credit: Urban Emissions
-
-  <br>
--->
 <br><br><br><br><br>
 
   <div class="graphicHeader">
@@ -346,5 +196,4 @@
 
 </body>
 <script type="text/javascript" src="static/js/htmljs.js"></script>
-<script type="text/javascript" src="static/js/apijs.js"></script>
 </html>

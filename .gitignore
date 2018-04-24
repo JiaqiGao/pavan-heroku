@@ -1,0 +1,8 @@
+*.s[a-w][a-z]
+*~
+\#*\#
+.\#*
+.DS_Store
+*.pyc
+.secret_key
+.keys

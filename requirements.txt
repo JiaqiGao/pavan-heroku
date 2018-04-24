@@ -1,2 +1,3 @@
-Flask
+flask
 gunicorn
+git+https://github.com/dhhagan/py-openaq.git

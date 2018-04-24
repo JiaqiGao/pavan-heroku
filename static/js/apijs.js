@@ -32,7 +32,6 @@ function search(keyword, output) {
 			output.append("Sorry, there is no result for your query!")
 			return
 		}
-		console.log(result);
 		var table = $("<table/>").addClass("result");
 		var out = document.getElementById(output);
 
@@ -40,7 +39,6 @@ function search(keyword, output) {
 
 		document.getElementById("time-head").innerHTML = "(Last Updated " + result.data[0].time.stime +")";
 		document.getElementById("time-head").setAttribute("style", "font-family: Gotham Med; display: inline-block; font-size: smaller;");
-		console.log(result.data);
 		for(var i=0; i<result.data.length; i++){
 			if (result.data[i].aqi.length > 1){
 
@@ -147,9 +145,5 @@ function token() {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     init("delhi");
-		console.log("loaded");
 });
 
-document.addEventListener("click", function(event) {
-	console.log(event.clientX + ", "+ event.clientY);
-})
