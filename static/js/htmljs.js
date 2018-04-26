@@ -30,33 +30,26 @@ twitter.addEventListener("click", function() {
     }
 });
 
-var seemore = document.getElementById("seemore");
 
-seemore.addEventListener("click", function() {
-    var style = window.getComputedStyle(resultsearch).getPropertyValue('display');
-    if(style == 'none'){
-        $("#resultsearch").css('display','block');
-        seemore.innerHTML = "Click to Close Other Stations in: New Delhi"
-    }else{
-        $("#resultsearch").css('display','none');
-        seemore.innerHTML = "Click to See More Stations in: New Delhi"
-    }
+var bg = document.getElementById("graphic1");
+
+
+var bgImageArray = ["0.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
+    base = "static/media/homepage/New_Delhi_",
+    secs = 6;
+    bgImageArray.forEach(function(img){
+        new Image().src = base + img;
 });
 
-var action_change_bg = setInterval(changeBG, 6000);
-var bgcount = 0;
-var newURL = "url('../media/homepage/New_Delhi_0.jpg')";
-
-function changeBG() {
-    for (var i=0; i<6; i++){
-        if (bgcount == i){
-            newURL = "url('static/media/homepage/New_Delhi_"+i+".jpg')";
-            $("#graphic1").css('background-image', newURL);
-            $("#graphic1").css('transition', 'background-image 2s ease-out');
-        }
-        if (bgcount == 6){
-            bgcount = 0;
-        }
+function backgroundSequence() {
+    window.clearTimeout();
+    var k = 0;
+    for (var i = 0; i < bgImageArray.length; i++) {
+        setTimeout(function(){
+            bg.style.background = "url(" + base + bgImageArray[k] + ") center center fixed";
+            bg.style.backgroundSize ="cover";
+            if ((k + 1) === bgImageArray.length) { setTimeout(function() { backgroundSequence() }, (secs * 1000))} else { k++; }
+        }, (secs * 1000) * i)
     }
-    bgcount += 1;
 }
+backgroundSequence();

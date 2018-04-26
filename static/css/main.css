@@ -89,12 +89,14 @@ ul.nav a:hover{
 }
 
 #graphic1 {
-    background-image: url('../media/homepage/New_Delhi_0.jpg');
-    background-position: center;
-    margin: auto;
-    background-size: cover;
-    height: 40vw;
-    padding: 5vw;
+  background: url('../media/homepage/New_Delhi_0.jpg');
+  background-position: center;
+  background-blend-mode: darken;
+  margin: auto;
+  background-size: cover;
+  height: 40vw;
+  padding: 5vw;
+  transition: 3s;
 }
 
 #courtesy {
@@ -340,4 +342,9 @@ text {
 p{
   line-height: 10px;
   display: inline;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
 }

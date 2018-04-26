@@ -1,2 +1,4 @@
-Flask
-gunicorn
+gunicorn 
+flask 
+requests
+py-openaq
