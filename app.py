@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET","POST"])
 def index():
     #config.load_keys()
-    GOOGLE_MAP = config.keys["GOOGLE_MAPS_Javascript"]
+    GOOGLE_MAP = "AIzaSyCpr3HIBG54RcPBos-g-ihuy80VAJVLSPY" #config.keys["GOOGLE_MAPS_Javascript"]
     #return render_template("index.html")
     if request.method == "POST":
         address = request.form['address']
