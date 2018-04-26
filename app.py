@@ -4,7 +4,7 @@ import config
 import json
 from flask import Flask, render_template, request, session, redirect, url_for
 
-import apifunctions
+#import apifunctions
 
 
 app = Flask(__name__)

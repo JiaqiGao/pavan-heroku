@@ -1,6 +1,6 @@
 import config
 import requests
-import openaq
+#import openaq
 
 #search_address = "Connaught Place, New Delhi, India"
 
