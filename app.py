@@ -10,7 +10,7 @@ import apifunctions
 app = Flask(__name__)
 
 #@app.route("/")
-@app.route("/", methods=["GET","POST"])
+@app.route("/", methods=["POST"])
 def index():
     config.load_keys()
     GOOGLE_MAP = config.keys["GOOGLE_MAPS_Javascript"]
@@ -27,5 +27,5 @@ def index():
 
 
 if __name__ == "__main__":
-    #config.load_keys()
+    config.load_keys()
     app.run()
